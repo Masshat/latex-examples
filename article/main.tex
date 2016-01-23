@@ -1,0 +1,52 @@
+\documentclass[letterpaper]{scrartcl} % nicer style than 'article'
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[backend=biber,
+	style=authoryear,
+	doi=false,url=false,isbn=false,
+maxcitenames=3]{biblatex}
+% hyperref creates pdf metadata, including table of contents
+\usepackage{caption,subcaption,amsmath,amssymb,amsthm,graphicx,hyperref}
+
+\graphicspath{{graphics/}} % where to look for image files
+\addbibresource{references.bib} % separate file for bibtex references
+\AtEveryBibitem{\clearlist{language}} % clears language from bib entries
+
+% define what you need
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+
+% define some variables for reuse
+\newcommand{\mytitle}{Article Title}
+\newcommand{\mysubtitle}{Article Subtitle}
+\newcommand{\myname}{Toban Wiebe}
+
+\hypersetup{% set up hyperref to generate pdf metadata
+	pdftitle={\mytitle},
+	pdfauthor={\myname},
+}
+
+% comment out fields you don't want
+\title{\mytitle}
+\subtitle{\mysubtitle}
+\author{\myname}
+\date{January 2016}
+
+
+\begin{document}
+
+\maketitle % generate title page
+
+% modular contents
+\input{abstract.tex} % for a page break, use \newpage  
+\input{introduction.tex}
+\input{literature.tex}
+\input{model.tex}
+\input{results.tex}
+
+\printbibliography % insert references
+
+\input{appendix.tex}
+
+\end{document}
